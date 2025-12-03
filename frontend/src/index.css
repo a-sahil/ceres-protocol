@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Agricultural Green Theme - All HSL values */
+    --background: 0 0% 100%;
+    --foreground: 130 15% 22%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 130 15% 22%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 130 15% 22%;
+
+    /* Primary: Forest Green #2D5016 */
+    --primary: 100 60% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Fresh Green #4CAF50 */
+    --secondary: 122 39% 49%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: Sage Green */
+    --muted: 100 15% 74%;
+    --muted-foreground: 130 10% 45%;
+
+    /* Accent: Mint Green */
+    --accent: 112 60% 76%;
+    --accent-foreground: 100 60% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 100 10% 88%;
+    --input: 100 10% 85%;
+    --ring: 122 39% 49%;
+
+    --radius: 0.5rem;
+
+    /* Custom Design Tokens */
+    --forest-green: 100 60% 20%;
+    --fresh-green: 122 39% 49%;
+    --mint-green: 112 60% 76%;
+    --sage-green: 100 15% 74%;
+    --off-white: 120 20% 98%;
+    --dark-gray: 130 15% 22%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(112 60% 76%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-card-warehouse: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(112 60% 76% / 0.2) 100%);
+    --gradient-card-farmer: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(100 15% 74% / 0.3) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 12px hsl(100 60% 20% / 0.06);
+    --shadow-md: 0 4px 24px hsl(100 60% 20% / 0.08);
+    --shadow-lg: 0 8px 40px hsl(100 60% 20% / 0.12);
+    --shadow-hover: 0 12px 48px hsl(100 60% 20% / 0.15);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease;
+  }
+
+  .dark {
+    --background: 130 15% 10%;
+    --foreground: 0 0% 98%;
+    --card: 130 15% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 130 15% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 122 39% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 100 60% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 130 15% 20%;
+    --muted-foreground: 100 15% 74%;
+    --accent: 112 60% 76%;
+    --accent-foreground: 130 15% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 130 15% 25%;
+    --input: 130 15% 25%;
+    --ring: 122 39% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    color: hsl(var(--forest-green));
+  }
+}
+
+@layer components {
+  /* Hover scale animation */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  /* Card lift effect */
+  .card-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: hsl(var(--fresh-green));
+  }
+
+  /* Underline animation for links */
+  .link-underline {
+    @apply relative inline-block;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute w-full h-0.5 bottom-0 left-0 origin-bottom-right;
+    background-color: hsl(var(--fresh-green));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom-left;
+  }
+}
